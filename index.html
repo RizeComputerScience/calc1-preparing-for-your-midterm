@@ -2850,7 +2850,7 @@ function examFactsHTML() {
   return prose('', ['Knowing exactly what the midterm looks like removes most of the guesswork from preparing for it.']) +
     sub('sec-covers', 'What It Covers',
       para('The midterm covers everything from Change through The Chain Rule and What It Unlocks: rates of change and the idea of a limit, computing limits algebraically, continuity and the definition of the derivative, the differentiation rules, and the chain rule along with what it unlocks (exponential, logarithmic and inverse trig derivatives, implicit differentiation, logarithmic differentiation and linear approximation). Anything in those five units’ guides, problem sets and the Derivative Rules Check is fair game.') +
-      para('Pass the Derivative Rules Check in Unit 6 before you start the midterm; it is required. It has 12 questions, you pass with 11 of 12 correct, and you may take it as many times as you need. If you have already passed it, any later attempt is practice and does not change that.')) +
+      para('Aim for 11 of 12 on the Derivative Rules Check in Unit 6 before you start the midterm. It has 12 questions worth 30 points in all. You can take it as many times as you like before it is due at the end of Unit 6, and your highest score counts.')) +
     sub('sec-format', 'Format',
       para('The midterm has 18 questions worth 120 points total, in three parts. You have 120 minutes, in one sitting.') +
       olist(['**12 questions, 3 points each (36 points).** Short, auto-checked answers: a number or a choice among options. You will know right away whether these are marked correct.',
@@ -3043,9 +3043,9 @@ function cuesHTML() {
    ENTRIES are the Must-Know Formulas entries for Units 2 to 6, worded exactly as the course list writes them
    (plan/pauls-pivot/resources/must-know-formulas.md; tests/mkf_check.py compares the wording). Each carries the Paul's section to
    reread and two or three of the practice problems its unit guide lists for that section. */
-var UNITS = { 2: ['Change', 'Problem Set 1: Change'], 3: ['Computing Limits', 'Problem Set 2: Computing Limits'],
-  4: ['Continuity and the Derivative', 'Problem Set 3: Continuity and the Derivative'], 5: ['Differentiation Rules', 'Problem Set 4: Differentiation Rules'],
-  6: ['The Chain Rule and What It Unlocks', 'Problem Set 5: The Chain Rule and What It Unlocks'] };
+var UNITS = { 2: ['Change', 'Problem Set 1, Parts 1 and 2'], 3: ['Computing Limits', 'Problem Set 2, Parts 1 and 2'],
+  4: ['Continuity and the Derivative', 'Problem Set 3, Parts 1 and 2'], 5: ['Differentiation Rules', 'Problem Set 4, Parts 1 and 2'],
+  6: ['The Chain Rule and What It Unlocks', 'Problem Set 5, Parts 1 and 2'] };
 /* read: [page, examples]; work: [page, [problem numbers]] */
 var ENTRIES = [
   { id: 'u2-arc', unit: 2, md: 'Average rate of change of `f` from `x = a` to `x = b` `= F{f(b) − f(a)}{b − a}`',
@@ -3205,7 +3205,7 @@ function planHTML() {
 function planAllHTML() {
   var steps = ['**Write Must-Know Formulas from memory again.** On a different day before the midterm, write every Units 2 to 6 entry you can recall on a blank sheet. Then check your sheet against the list, giving the entries you rated Unsure or Lost extra attention.',
     '**Do one closed-note rehearsal.** Put away your notes and Must-Know Formulas. On paper, from memory, work these four problems: [Paul’s Computing Limits problem](' + PP + 'ComputingLimits.aspx) 5, [Paul’s Definition of the Derivative problem](' + PP + 'DefnOfDerivative.aspx) 6, [Paul’s Chain Rule problem](' + PP + 'ChainRule.aspx) 15 and [Paul’s Implicit Differentiation problem](' + PP + 'ImplicitDIff.aspx) 5. Beside each step, write the name of the rule or theorem you used, as the written midterm questions ask. Then check each problem against its solution. Anything you could not recall goes on your list.',
-    '**Retake the Derivative Rules Check.** Take it once more before the midterm. It allows unlimited attempts, and every rules question on the midterm assumes that fluency.'];
+    '**Rework the Derivative Rules Check.** Redo, on paper, every question you missed, until each rule is automatic. Every rules question on the midterm assumes that fluency.'];
   return '<h3 class="pl-all-h">For Everyone</h3>' + para('Whatever you rated, finish with these steps. They are closed-note practice, the kind of studying the reasons above favor.') + olist(steps, 'exam-ol');
 }
 
@@ -3338,7 +3338,7 @@ selfcheck.add('plan: units in need order, Lost first, missed-in-drill first, one
   var h = planHTML();
   if (/redo/i.test(h)) errs.push('plan says redo');
   if ((h.match(/class="pl-ps"/g) || []).length !== 2) errs.push('problem-set lines ' + (h.match(/class="pl-ps"/g) || []).length);
-  if (h.indexOf('Problem Set 5: The Chain Rule and What It Unlocks') < 0 || h.indexOf('Problem Set 2: Computing Limits') < 0) errs.push('problem-set names');
+  if (h.indexOf('Problem Set 5, Parts 1 and 2') < 0 || h.indexOf('Problem Set 2, Parts 1 and 2') < 0) errs.push('problem-set names');
   if (h.indexOf('Problem Set 1') >= 0) errs.push('a confirm-only unit asks for problem-set rework');
   selfcheck.restore(snap, ['rate', 'plan', 'drill']);
   return errs.length ? { ok: false, detail: errs.join('; ') } : true;
